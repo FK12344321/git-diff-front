@@ -1,5 +1,9 @@
 <template>
   <div class="repo-url">
+    <div>
+      <div class="mt-2">Value: {{ text }}</div>
+      <b-form-input v-model="text" placeholder="Enter the repo URL"></b-form-input>
+    </div>
     <label for="repoUrlInput">Repo URL:</label>
     <div class="input-container">
       <input
@@ -31,5 +35,5 @@ export default {
 </script>
 
 <style scoped>
-/* Styles remain the same */
+
 </style>

@@ -81,5 +81,7 @@ export default {
 </script>
 
 <style>
-/* Styles remain the same */
+#app {
+  margin: 20px;
+}
 </style>
