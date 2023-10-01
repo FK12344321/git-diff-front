@@ -1,19 +1,28 @@
 <template>
   <div class="repo-url">
+    <h3 class="options">Options</h3>
     <div>
-      <div class="mt-2">Value: {{ text }}</div>
-      <b-form-input v-model="text" placeholder="Enter the repo URL"></b-form-input>
-    </div>
-    <label for="repoUrlInput">Repo URL:</label>
-    <div class="input-container">
-      <input
-        type="text"
-        id="repoUrlInput"
-        class="repo-url-input"
-        v-model="repoUrl"
-        placeholder="Enter the repository URL"
-      />
-      <button class="btn-light-green" @click="submitRepoUrl">Submit</button>
+      <b-container fluid>
+        <b-row>
+          <b-col sm="9">
+            <b-form-input
+              id="repoUrlInput"
+              class="repo-url-input"
+              v-model="repoUrl"
+              placeholder="Enter the repo URL"
+            ></b-form-input>
+          </b-col>
+          <b-col>
+            <b-button
+              squared
+              variant="outline-primary"
+              @click="submitRepoUrl"
+              class="load-btn"
+              >Load</b-button
+            >
+          </b-col>
+        </b-row>
+      </b-container>
     </div>
   </div>
 </template>
@@ -35,5 +44,11 @@ export default {
 </script>
 
 <style scoped>
+.load-btn {
+  margin-left: 10px;
+}
 
+.options {
+  margin-left: 10px;
+}
 </style>
