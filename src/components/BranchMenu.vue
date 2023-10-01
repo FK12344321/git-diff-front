@@ -5,7 +5,7 @@
       :text="this.selectedBranchLeft"
       variant="primary"
       class="m-2"
-      @click="handleBranch1"
+      @click="handleBranchLeft"
     >
       <b-dropdown-item
         v-for="branch in branches"
@@ -51,9 +51,9 @@
       id="commits-right"
       right
       :text="
-        this.selectedCommitLeft == 'Commit'
+        this.selectedCommitRight == 'Commit'
           ? 'Commit'
-          : this.truncateCommitMessage(this.selectedCommitLeft)
+          : this.truncateCommitMessage(this.selectedCommitRight)
       "
       variant="primary"
       class="ml-5 d2"
