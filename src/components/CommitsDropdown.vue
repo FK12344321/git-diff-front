@@ -59,7 +59,6 @@ export default {
           const response = await axios.get(url);
           if (response.status === 200) {
             this.commits = response.data; // Set the commits data with the fetched data
-            console.log(this.commits);
           }
         } catch (error) {
           console.error("Error fetching commits:", error);

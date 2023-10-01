@@ -49,6 +49,6 @@ export default {
 }
 
 .options {
-  margin-left: 10px;
+  margin-left: 13px;
 }
 </style>

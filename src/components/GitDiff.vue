@@ -44,13 +44,11 @@ export default {
         // Extract the sha part from the selected commits
         const firstCommitSha = firstCommit.sha;
         const secondCommitSha = secondCommit.sha;
-        console.log(typeof secondCommitSha);
         // Extract the base URL from selectedRepoUrl
         const baseUrl = this.selectedRepoUrl.split("/branches")[0];
 
         // Construct the diff URL with the sha values
         const diffUrl = `${baseUrl}/diff?originalHash=${firstCommitSha}&updatedHash=${secondCommitSha}`;
-        console.log(diffUrl);
 
         // Fetch the diff content
         this.fetchDiff(diffUrl);
@@ -63,7 +61,6 @@ export default {
           const response = await axios.get(url);
           if (response.status === 200) {
             this.diffs = response.data.rawDiff; // Set the diffs data with the fetched data
-            console.log(typeof response.data);
           }
         } catch (error) {
           console.error("Error fetching diff:", error);

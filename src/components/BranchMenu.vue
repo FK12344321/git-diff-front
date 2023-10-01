@@ -66,7 +66,7 @@
       >
     </b-dropdown>
 
-    <b-button variant="outline-primary" @click="handleComparison"
+    <b-button variant="outline-success" @click="handleComparison"
       >Compare</b-button
     >
   </div>
@@ -146,7 +146,21 @@ export default {
       this.selectedCommitRight = commit;
     },
 
+    async getFiles(firstHash, secondHash) {
+      const URL = `http://10.90.136.100:3000/files?originalHash=${firstHash}&updatedHash=${secondHash}`;
+
+      try {
+        const response = await axios.get(`${URL}`);
+        if (response.status === 200) {
+          this.$emit("getFiles", response.data);
+        }
+      } catch (error) {
+        console.log("Error fetching data");
+      }
+    },
+
     handleComparison() {
+      this.getFiles(this.selectedCommitLeft.sha, this.selectedCommitRight.sha);
       this.$emit("compareCommits", {
         "First Commit": this.selectedCommitLeft,
         "Second Commit": this.selectedCommitRight,
@@ -158,12 +172,10 @@ export default {
         try {
           const baseUrl = this.selectedRepoUrl.split("/branches")[0];
           const URL = `${baseUrl}/commits?branch=${branch}`;
-          console.log("URL is: ", URL);
           // Fetch commits based on repoUrl and branch
           // Adjust the API endpoint and data structure as per your API
           const response = await axios.get(`${URL}`);
           if (response.status === 200) {
-            console.log("Data: ", response.data);
             this[target] = response.data;
           }
         } catch (error) {
@@ -172,8 +184,7 @@ export default {
       }
     },
     truncateCommitMessage(commit) {
-      console.log("Type of commit: ", commit);
-      return commit.sha.slice(0, 20);
+      return commit.message.slice(0, 20);
     },
   },
 };
